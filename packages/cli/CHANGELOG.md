@@ -1,5 +1,19 @@
 # cf
 
+## 1.0.0-rc.2
+
+### Minor Changes
+
+- 8752121: Update the generated command surface for Forge OpenAPI release
+  `25d3d64b6ab8b024a15ea087f4f64dff266559ff`.
+
+### Patch Changes
+
+- f88b435: Bump the `@cloudflare/forge` pin to build
+  `f6720c19250f90fe5b395ef2c38d488aaba31641` (Forge 0.2.0, which moved SDK
+  generation under a `generate` subcommand) and invoke the CLI via
+  `forge generate` so `pnpm generate` keeps working.
+
 ## 1.0.0-rc.1
 
 ### Minor Changes
