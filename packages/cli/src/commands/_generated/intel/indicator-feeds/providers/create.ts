@@ -53,15 +53,15 @@ const command: CommandModule<CommonYargsOptions, Args> = {
 			},
 			argv as Record<string, unknown>,
 			async () => {
-				if (argv.body === undefined) {
-					if (argv["name"] === undefined) {
-						argv["name"] = await promptForRequiredField(
-							"name",
-							"The name of the provider"
-						);
-					}
-				}
 				if (argv.dryRun) {
+					if (argv.body === undefined) {
+						if (argv["name"] === undefined) {
+							argv["name"] = await promptForRequiredField(
+								"name",
+								"The name of the provider"
+							);
+						}
+					}
 					const __cfDryRunAccountId = await resolveAccountIdSilent();
 					formatDryRun({
 						command: "cf intel indicator-feeds providers create",
@@ -95,6 +95,12 @@ const command: CommandModule<CommonYargsOptions, Args> = {
 					);
 					formatOutput(result, { successLabel: `Updated` });
 					return;
+				}
+				if (argv["name"] === undefined) {
+					argv["name"] = await promptForRequiredField(
+						"name",
+						"The name of the provider"
+					);
 				}
 
 				// Assemble request body from individual flags
